@@ -1,1 +1,1 @@
-bool cerca(char lista_nomi[10][20], char a[], int &pos);
+bool ricerca_nome(char[10][20], int &, char[]);
