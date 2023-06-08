@@ -1,18 +1,20 @@
+#include <iostream>
 #include "lib.h"
-bool ricerca_nome(char listanome[10][20], int &pos, char a[]){
-    for(int i=0;i<10;i++){
+using namespace std;
 
-        for(int j=0;j<20;j++){
-            if(listanome[i][j] != a[j]){
-                j = 20;
-            }else{
-
-                if(j==19){
-                    pos = (i)/2;
-
-                    return true;
-
-                }}}
+int main() {
+    char nomi[5][15], cognomi[5][15];
+    init(nomi);
+    init(cognomi);
+    inserimento(nomi, cognomi);
+    char nome[15], cognome[15];
+    inserimento(nome, 15);
+    inserimento(cognome, 15);
+    int id = ricerca(nomi, cognomi, nome, cognome);
+    if (id != -1) {
+        cout << "trovato in posizione " << id << endl;
+    }else{
+        cout << "non trovato" <<endl;
     }
-    return false;
+    return 0;
 }
