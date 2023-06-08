@@ -1,20 +1,51 @@
 #include <iostream>
 #include "lib.h"
+
 using namespace std;
 
-int main() {
-    char nomi[5][15], cognomi[5][15];
-    init(nomi);
-    init(cognomi);
-    inserimento(nomi, cognomi);
-    char nome[15], cognome[15];
-    inserimento(nome, 15);
-    inserimento(cognome, 15);
-    int id = ricerca(nomi, cognomi, nome, cognome);
-    if (id != -1) {
-        cout << "trovato in posizione " << id << endl;
-    }else{
-        cout << "non trovato" <<endl;
+void init (char mat[], int n){
+    for(int i=0;i<n;i++){
+        mat[i]= ' ';
     }
-    return 0;
+}
+void init(char mat[5][15]){
+    for(int i=0;i<5;i++){
+        init(mat[i],15);
+    }
+}
+
+void inserimento(char nomi[5][15], char cognomi[5][15]){
+    for(int i=0; i<5;i++){
+        inserimento(nomi[i],15);
+        inserimento(cognomi[i],15);
+    }
+}
+
+void inserimento(char mat[], int a){
+    char n[a*10];
+    init(n,a*10);
+    cin >> n;
+   for(int i=0;i<a;i++){
+        mat[i] =n[i];
+    }
+}
+
+int ricerca(char nomi[5][15], char cognomi[5][15], char nome[15], char cognome[15]){
+    for(int i=0;i<5;i++){
+            int j=0;
+        for(j=0;j<15;j++) {
+            if (cognomi[i][j] != cognome[j]) {
+                break;
+            }
+            if (nomi[i][j] != nome[j]) {
+                break;
+            }
+        }
+        if(j==15) {
+          return i;
+    }
+
+        }
+
+    return -1;
 }
